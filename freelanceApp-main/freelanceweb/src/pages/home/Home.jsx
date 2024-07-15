@@ -51,7 +51,7 @@ const Home=()=>{
                    
                 </div>
                 <div className='item'>
-                    <video src="./img/video.mp4" controls></video>
+                    <video src="./img/myvedio1.mp4" controls autoPlay loop></video>
                 </div>
             </div>
         </div>

@@ -82,10 +82,10 @@ const Add=()=>{
                     </select>
                     <div className='images'>
                     <div className='imagesInputs'>
-                    <label htmlFor=''>Cover Image</label>
-                    <input type='file' onChange={e=>setSingleFile(e.target.files[0])}/>
-                    <label htmlFor=''>Upload Images</label>
-                    <input type="file" multiple onChange={e=>setFiles(e.target.files)}/>
+                        <label htmlFor=''>Cover Image</label>
+                        <input type='file' onChange={e=>setSingleFile(e.target.files[0])}/>
+                        <label htmlFor=''>Upload Images</label>
+                        <input type="file" multiple onChange={e=>setFiles(e.target.files)}/>
                     </div>
                     <button onClick={handleUpload}>{uploading ? "uploading" : "Upload"}</button>
                     </div>

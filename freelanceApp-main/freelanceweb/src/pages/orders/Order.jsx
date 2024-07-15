@@ -16,22 +16,21 @@ const Order=()=>{
             return res.data;
           }),
       });
-
+      console.log("Orders from server",data)
 
     const handleContact=async(order)=>{
-     const sellerId=order.sellerId;
-     const buyerId=order.buyerId;
-     const id=sellerId+buyerId;
-
-    try{
-        const res=await newRequest.get(`/conversations/single/${id}`);
-        navigate(`/message/${res.data.id}`)
-    }catch(err){
-        if(err.response.status===404){
-            const res=await newRequest.post(`/conversations/`,{to:currentUser.seller ? buyerId : sellerId});
+        const sellerId=order.sellerId;
+        const buyerId=order.buyerId;
+        const id=sellerId+buyerId;
+        try{
+            const res=await newRequest.get(`/conversations/single/${id}`);
             navigate(`/message/${res.data.id}`)
+        }catch(err){
+            if(err.response.status===404){
+                const res=await newRequest.post(`/conversations/`,{to:currentUser.seller ? buyerId : sellerId});
+                navigate(`/message/${res.data.id}`)
+            }
         }
-      }
     }
     
     return(
@@ -45,7 +44,8 @@ const Order=()=>{
             <th>Image</th>
             <th>Title</th>
             <th>Price</th>
-            <th>Contact</th>
+            <th>Status</th>
+            <th>Contact</th>   
         </tr>
         {
             data.map(order=>{
@@ -57,6 +57,10 @@ const Order=()=>{
         <td>
         {order.price}
         </td>
+        <td>
+        {(order.isCompleted==true)? "Completed":"Pending"}
+        </td>
+        
         <td>
             <img className='delete' src="/img/message.png" alt="" onClick={()=>handleContact(order)}/>
         </td>

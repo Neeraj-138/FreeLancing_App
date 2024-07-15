@@ -45,6 +45,7 @@ const Register=()=>{
                 ...user,
                 img:url,
             });
+            alert("user Created successfully")
             navigate('/')
         }catch(err){
             console.log(err)

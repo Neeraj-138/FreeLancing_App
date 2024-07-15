@@ -35,11 +35,15 @@ res.status(200).send({
 }
 
 export const getOrders=async(req,res,next)=>{
-    try{
+     try{
+
         const orders=await Order.find({
             ...(req.isSeller ?{sellerId:req.userId}:{buyerId:req.userId}),
-            isCompleted:true,
+            isCompleted:false,
         });
+        console.log("from server",orders)
+
+
         res.status(200).send(orders);
     }catch(err){
         next(err)

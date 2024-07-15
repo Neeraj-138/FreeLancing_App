@@ -13,15 +13,21 @@ import reviewlikeRoute from "./routes/reviewlike.route.js" //new code
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-const app=express();
+const app=express()
 dotenv.config();
 mongoose.set("strictQuery",true)
 
 
 const connect=async()=>{
 try{
-    await mongoose.connect(process.env.MONGO)
-    console.log('connected to MongoDB!')
+    // await mongoose.connect(process.env.URI)
+   
+    const uri = "mongodb+srv://Neeraj:Manit%40138@atlascluster.wez5xu3.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=AtlasCluster";
+    await mongoose.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    console.log("Database Connected Successfully")
 }catch(error){
     console.log(error);
 }

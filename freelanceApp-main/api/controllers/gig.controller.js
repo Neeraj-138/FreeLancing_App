@@ -10,6 +10,7 @@ export const createGig=async(req,res,next)=>{
         ...req.body,
     });
     try{
+        console.log("Trying to create geeks")
         const saveGig= await newGig.save();
         res.status(201).json(saveGig)
     }catch(err){
@@ -37,8 +38,13 @@ export const getGig=async(req,res,next)=>{
         next(err)
     }   
 }
+export const getmyGigs=(req,res)=>{
+    console.log("hiiting")
+    res.send("getting")
+}
 export const getGigs=async(req,res,next)=>{
     const q=req.query;
+    console.log("req from frontend",req.query)
     const filters={
         ...(q.userId && {userId:q.userId}),
         ...(q.cat && {cat:q.cat}),
