@@ -11,11 +11,11 @@ const Home=()=>{
     <div className='home'>
         <Featured/>
         <TrustedBy/>
-        <Slide slidesToShow={5} arrowsScroll={5}>
+        {/* <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((val)=>{
             return <CatCard img={val.img} search={val.search} title={val.title} desc={val.desc} key={val.id}/>
         })}
-        </Slide>
+        </Slide> */}
         <div className='features'>
             <div className='container'>
                 <div className='item'>
@@ -85,11 +85,11 @@ const Home=()=>{
                 </div>
             </div>
         </div>
-        <Slide slidesToShow={4} arrowsScroll={4}>
+        {/* <Slide slidesToShow={4} arrowsScroll={4}>
         {projects.map((val)=>{
             return <ProjectCard img={val.img} pp={val.pp} username={val.username} cat={val.cat} key={val.id}/>
         })}
-        </Slide>
+        </Slide> */}
     </div>
     );
 }
